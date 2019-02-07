@@ -8,6 +8,7 @@
 - Delete Contact
 - Edit Contact
 - Clean routing i.e '/contact/:id'
+- Use material-ui for components
 
 ### Bonuses
 
