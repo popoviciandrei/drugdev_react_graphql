@@ -9,6 +9,17 @@ db.defaults({
   contacts: []
 }).write();
 
+const getDate = () => {
+  const m = new Date();
+  return m.getUTCFullYear() + "-" +
+    ("0" + (m.getUTCMonth() + 1)).slice(-2) + "-" +
+    ("0" + m.getUTCDate()).slice(-2) + " " +
+    ("0" + m.getUTCHours()).slice(-2) + ":" +
+    ("0" + m.getUTCMinutes()).slice(-2) + ":" +
+    ("0" + m.getUTCSeconds()).slice(-2);
+}
+
+
 const server = new ApolloServer({
   resolvers: {
     Query: {
@@ -24,7 +35,7 @@ const server = new ApolloServer({
     },
     Mutation: {
       async addContact(_, { contact }) {
-        let newContact = { ...contact, id: uid() };
+        let newContact = { ...contact, id: uid(), date_created: getDate() };
         await db
           .get("contacts")
           .push(newContact)
@@ -39,10 +50,12 @@ const server = new ApolloServer({
         return true;
       },
       async updateContact(_, { contact }) {
+        let updatedContact = { ...contact, date_edited: getDate() }
+
         await db
           .get("contacts")
           .find({ id: contact.id })
-          .assign({ ...contact })
+          .assign({ ...updatedContact })
           .write();
 
         return db
@@ -57,6 +70,8 @@ const server = new ApolloServer({
       id: ID
       name: String
       email: String
+      date_created: String
+      date_edited: String
     }
 
     input InputContact {

@@ -1,0 +1,3 @@
+mutation DeleteContactMutation($id:ID) {
+  deleteContact(id: $id) 
+}

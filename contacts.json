@@ -1,9 +1,18 @@
 {
   "contacts": [
     {
-      "name": "Janet Doe",
-      "email": "jane@doe.com",
-      "id": "SZuuoBIHVRYuWGWavPYH2"
+      "name": "Contact 1",
+      "email": "new@email.com",
+      "id": "QTy-s_d8j8JVj0CvGV61q",
+      "date_created": "2019-07-14 23:11:15",
+      "date_edited": "2019-07-14 23:12:12"
+    },
+    {
+      "id": "COW55vl3_KjNBlUnKMMZk",
+      "name": "New name updated 1",
+      "email": "new@email.comodified",
+      "date_created": "2019-07-14 23:58:47",
+      "date_edited": "2019-07-15 00:00:05"
     }
   ]
 }

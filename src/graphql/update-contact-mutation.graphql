@@ -1,0 +1,10 @@
+mutation UpdateContactMutation($contact:InputContact) {
+  updateContact(contact:$contact) {
+    id
+    name
+    email
+    date_created
+    date_edited
+    
+  }
+}
